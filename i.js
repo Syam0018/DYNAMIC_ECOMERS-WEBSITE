@@ -61,23 +61,23 @@ function displayProducts(category) {
             if (likedProducts.has(product.id)) {
                 likedProducts.delete(product.id);
                 likeButton.classList.remove('liked');
-                alert(You unliked ${product.title});
+                alert(`You unliked ${product.title}`);
             } else {
                 likedProducts.add(product.id);
                 likeButton.classList.add('liked');
-                alert(You liked ${product.title});
+                alert(`You liked ${product.title}`);
             }
         });
         const shareButton = productDiv.querySelector('.share-button');
         shareButton.addEventListener('click', () => {
-            alert(You shared ${product.title});
+            alert(`You shared ${product.title}`);
         });
 
         const addToCartBtn = productDiv.querySelector('.add-to-cart');
         addToCartBtn.addEventListener('click', () => {
             cart.push(product);
             cartCount.textContent = cart.length;
-            alert(${product.title} added to cart!);
+            alert(`${product.title} added to cart!`);
         });
 
         productsContainer.appendChild(productDiv);
@@ -91,7 +91,7 @@ function showCart() {
 
     let cartItems = "Items in your cart:\n";
     cart.forEach(item => {
-        cartItems += ${item.title} - $${item.price}\n;
+        cartItems += `${item.title} - $${item.price}\n`;
     });
     alert(cartItems);
 }
@@ -118,7 +118,7 @@ searchButton.addEventListener('click', () => {
         addToCartBtn.addEventListener('click', () => {
             cart.push(product);
             cartCount.textContent = cart.length;
-            alert(${product.title} added to cart!);
+            alert(`${product.title} added to cart!`);
         });
 
         productsContainer.appendChild(productDiv);
