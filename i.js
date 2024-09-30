@@ -6,9 +6,7 @@ const searchButton = document.getElementById('search-button');
 
 let cart = [];
 let allProducts = [];
-let likedProducts = new Set(); // To keep track of liked products
-
-// Fetch products from the API
+let likedProducts = new Set(); 
 fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(products => {
@@ -19,12 +17,10 @@ fetch('https://fakestoreapi.com/products')
 
     const sliderSection = document.getElementById('slider-section');
 function showSlider() {
-    sliderSection.style.display = 'block'; // Make the slider visible
+    sliderSection.style.display = 'block'; 
 }
-
-// Hide the slider (Other pages)
 function hideSlider() {
-    sliderSection.style.display = 'none'; // Hide the slider
+    sliderSection.style.display = 'none'; 
 }
 
 function displayProducts(category) {
@@ -60,8 +56,6 @@ function displayProducts(category) {
             <p>$${product.price}</p>
             <button class="add-to-cart">Add to Cart</button>
         `;
-
-        // Add like functionality
         const likeButton = productDiv.querySelector('.like-button');
         likeButton.addEventListener('click', () => {
             if (likedProducts.has(product.id)) {
@@ -74,8 +68,6 @@ function displayProducts(category) {
                 alert(You liked ${product.title});
             }
         });
-
-        // Add share functionality
         const shareButton = productDiv.querySelector('.share-button');
         shareButton.addEventListener('click', () => {
             alert(You shared ${product.title});
@@ -91,8 +83,6 @@ function displayProducts(category) {
         productsContainer.appendChild(productDiv);
     });
 }
-
-// Show cart items
 function showCart() {
     if (cart.length === 0) {
         alert("Your cart is empty.");
@@ -105,8 +95,6 @@ function showCart() {
     });
     alert(cartItems);
 }
-
-// Search function
 searchButton.addEventListener('click', () => {
     const searchTerm = searchInput.value.toLowerCase();
     const searchResults = allProducts.filter(product => 
@@ -136,8 +124,6 @@ searchButton.addEventListener('click', () => {
         productsContainer.appendChild(productDiv);
     });
 });
-
-// Add event listeners to category filters
 const categoryFilters = document.querySelectorAll('.filter');
 categoryFilters.forEach(filter => {
     filter.addEventListener('click', (e) => {
@@ -145,9 +131,7 @@ categoryFilters.forEach(filter => {
         displayProducts(category);
     });
 });
-
-// Cart link click event
 cartLink.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default link behavior
-    showCart(); // Display cart items
+    e.preventDefault(); 
+    showCart(); 
 });
